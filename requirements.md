@@ -1,0 +1,1 @@
+I want to co-design a new CLI-based language. Let’s start with the 'Plan-First' workflow. First, help me define the grammar and syntax for the new language named "pebble", and then we will create a plan to build a Python-based interpreter for it. I want the language to read from standard input, write to standard output, and be turing complete.
