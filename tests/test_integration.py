@@ -5,14 +5,14 @@ import sys
 
 class TestIntegration(unittest.TestCase):
     def run_pebble(self, filename):
-        filepath = os.path.join('tests/integration', filename)
-
-        # Determine how to run pebble.py
-        # Assuming we are in repo root.
-        pebble_cli = os.path.abspath('pebble.py')
+        # We assume tests are run from repo root or tests dir.
+        # Let's find pebble.py relative to this file.
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        pebble_cli = os.path.join(base_dir, 'pebble.py')
+        filepath = os.path.join(base_dir, 'tests', 'integration', filename)
 
         env = os.environ.copy()
-        env['PYTHONPATH'] = os.getcwd() # Ensure pebble package is found
+        env['PYTHONPATH'] = base_dir # Ensure pebble package is found
 
         result = subprocess.run(
             [sys.executable, pebble_cli, filepath],
